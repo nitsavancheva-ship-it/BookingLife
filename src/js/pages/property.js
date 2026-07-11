@@ -39,7 +39,7 @@ function renderCarousel(photos) {
     .map(
       (photo, index) => `
       <div class="carousel-item ${index === 0 ? 'active' : ''}">
-        <img src="${getPhotoUrl(photo.storage_path)}" class="d-block w-100" style="max-height:400px;object-fit:cover;" />
+        <img src="${escapeHtml(getPhotoUrl(photo.storage_path))}" class="d-block w-100" style="max-height:400px;object-fit:cover;" />
       </div>`
     )
     .join('');
