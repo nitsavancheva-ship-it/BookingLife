@@ -30,5 +30,7 @@ form.addEventListener('submit', async (e) => {
 
   const params = new URLSearchParams(window.location.search);
   const redirect = params.get('redirect');
-  window.location.href = redirect ? decodeURIComponent(redirect) : '/index.html';
+  const target = redirect ? decodeURIComponent(redirect) : '/index.html';
+  // Only follow same-origin relative paths — never external URLs.
+  window.location.href = target.startsWith('/') && !target.startsWith('//') ? target : '/index.html';
 });
