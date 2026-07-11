@@ -1,4 +1,5 @@
 import { getPhotoUrl } from '../services/photos.js';
+import { escapeHtml } from '../utils/escape.js';
 
 function averageRating(reviews) {
   if (!reviews || reviews.length === 0) return null;
@@ -15,10 +16,10 @@ export function renderPropertyCard(property) {
     <div class="col-md-6">
       <a href="/property.html?id=${property.id}" class="text-decoration-none text-body">
         <div class="card h-100 property-card shadow-sm">
-          <img src="${imageUrl}" class="card-img-top" style="height: 180px; object-fit: cover;" alt="${property.title}" />
+          <img src="${imageUrl}" class="card-img-top" style="height: 180px; object-fit: cover;" alt="${escapeHtml(property.title)}" />
           <div class="card-body">
-            <h5 class="card-title">${property.title}</h5>
-            <p class="card-text text-muted mb-1"><i class="bi bi-geo-alt"></i> ${property.city}</p>
+            <h5 class="card-title">${escapeHtml(property.title)}</h5>
+            <p class="card-text text-muted mb-1"><i class="bi bi-geo-alt"></i> ${escapeHtml(property.city)}</p>
             <p class="card-text fw-bold mb-1">$${property.price_per_night} <span class="fw-normal text-muted">/ night</span></p>
             ${rating ? `<p class="card-text"><i class="bi bi-star-fill text-warning"></i> ${rating}</p>` : '<p class="card-text text-muted small">No reviews yet</p>'}
           </div>

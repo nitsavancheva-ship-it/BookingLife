@@ -5,6 +5,7 @@ import { renderNavbar } from '../components/navbar.js';
 import { listProperties, listCities } from '../services/properties.js';
 import { renderPropertyCard } from '../components/propertyCard.js';
 import { showToast } from '../utils/toast.js';
+import { escapeHtml } from '../utils/escape.js';
 
 renderNavbar();
 
@@ -27,7 +28,7 @@ function plotProperties(properties) {
   clearMarkers();
   properties.forEach((property) => {
     const marker = L.marker([property.latitude, property.longitude]).addTo(map);
-    marker.bindPopup(`<a href="/property.html?id=${property.id}">${property.title}</a>`);
+    marker.bindPopup(`<a href="/property.html?id=${property.id}">${escapeHtml(property.title)}</a>`);
     markers.push(marker);
   });
 }
