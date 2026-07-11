@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookingLife — Property</title>
+</head>
+<body>
+  <div id="navbar"></div>
+  <main class="container my-4">
+    <div id="loading" class="text-center py-5">
+      <div class="spinner-border text-primary" role="status"></div>
+    </div>
+
+    <div id="property-content" class="d-none">
+      <div id="carousel" class="carousel slide mb-4">
+        <div class="carousel-inner" id="carousel-inner"></div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </button>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-7">
+          <h1 id="property-title"></h1>
+          <p class="text-muted"><i class="bi bi-geo-alt"></i> <span id="property-address"></span></p>
+          <div id="property-rating" class="mb-3"></div>
+          <div class="d-flex gap-3 mb-3 text-muted">
+            <span><i class="bi bi-people"></i> <span id="property-guests"></span> guests</span>
+            <span><i class="bi bi-door-closed"></i> <span id="property-bedrooms"></span> bedrooms</span>
+            <span><i class="bi bi-droplet"></i> <span id="property-bathrooms"></span> bathrooms</span>
+          </div>
+          <p id="property-description"></p>
+          <div id="property-amenities" class="mb-4 d-flex flex-wrap gap-2"></div>
+          <div id="map" style="height: 300px; border-radius: 8px;" class="mb-4"></div>
+
+          <h4><i class="bi bi-person-circle"></i> Hosted by <span id="host-name"></span></h4>
+
+          <hr />
+          <h4 class="mt-4">Reviews</h4>
+          <div id="reviews-list"></div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="card shadow-sm sticky-top" style="top: 1rem;">
+            <div class="card-body">
+              <h4 class="card-title">$<span id="price-per-night"></span> <span class="fs-6 fw-normal text-muted">/ night</span></h4>
+              <div id="booking-widget">
+                <form id="booking-form">
+                  <div class="row g-2 mb-2">
+                    <div class="col-6">
+                      <label class="form-label small">Check-in</label>
+                      <input type="date" id="check-in" class="form-control" required />
+                    </div>
+                    <div class="col-6">
+                      <label class="form-label small">Check-out</label>
+                      <input type="date" id="check-out" class="form-control" required />
+                    </div>
+                  </div>
+                  <div id="price-summary" class="mb-3 d-none">
+                    <p class="mb-1"><span id="nights-count"></span> nights &times; $<span id="nightly-rate"></span></p>
+                    <p class="fw-bold">Total: $<span id="total-price"></span></p>
+                  </div>
+                  <div id="booking-error" class="alert alert-danger d-none"></div>
+                  <button type="submit" class="btn btn-primary w-100"><i class="bi bi-calendar-check"></i> Book now</button>
+                </form>
+              </div>
+              <div id="login-prompt" class="d-none text-center">
+                <p class="text-muted">Log in to book this property.</p>
+                <a href="#" id="login-prompt-link" class="btn btn-outline-primary w-100">Log in to book</a>
+              </div>
+              <div id="owner-notice" class="alert alert-info d-none mt-3 mb-0">This is your own listing.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="/src/js/pages/property.js"></script>
+</body>
+</html>
