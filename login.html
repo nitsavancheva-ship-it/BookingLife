@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookingLife — Login</title>
+</head>
+<body>
+  <div id="navbar"></div>
+  <main class="container my-5">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="card shadow-sm">
+          <div class="card-body p-4">
+            <h2 class="card-title mb-4 text-center"><i class="bi bi-house-heart-fill"></i> Log in</h2>
+            <form id="login-form" novalidate>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" required />
+                <div class="invalid-feedback">Please enter a valid email.</div>
+              </div>
+              <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" required minlength="6" />
+                <div class="invalid-feedback">Password must be at least 6 characters.</div>
+              </div>
+              <div id="form-error" class="alert alert-danger d-none"></div>
+              <button type="submit" class="btn btn-primary w-100">Log in</button>
+            </form>
+            <p class="text-center mt-3 mb-0">No account? <a href="/register.html">Register</a></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script type="module" src="/src/js/pages/login.js"></script>
+</body>
+</html>
