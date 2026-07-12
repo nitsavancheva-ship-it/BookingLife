@@ -22,15 +22,18 @@ function loadStats(profiles, properties, bookings) {
 function renderUsers(profiles) {
   const body = document.getElementById('users-table-body');
   body.innerHTML = profiles
-    .map(
-      (p) => `
+    .map((p) => {
+      // user_roles.user_id is the primary key, so PostgREST embeds this as a
+      // single object (or null), not an array.
+      const role = Array.isArray(p.user_roles) ? p.user_roles[0]?.role : p.user_roles?.role;
+      return `
       <tr>
         <td>${escapeHtml(p.display_name || '(no name)')}</td>
         <td>
           <select class="form-select form-select-sm role-select" data-user-id="${p.id}">
-            <option value="user" ${p.user_roles?.[0]?.role === 'user' ? 'selected' : ''}>user</option>
-            <option value="host" ${p.user_roles?.[0]?.role === 'host' ? 'selected' : ''}>host</option>
-            <option value="admin" ${p.user_roles?.[0]?.role === 'admin' ? 'selected' : ''}>admin</option>
+            <option value="user" ${role === 'user' ? 'selected' : ''}>user</option>
+            <option value="host" ${role === 'host' ? 'selected' : ''}>host</option>
+            <option value="admin" ${role === 'admin' ? 'selected' : ''}>admin</option>
           </select>
         </td>
         <td>
@@ -39,8 +42,8 @@ function renderUsers(profiles) {
           </button>
         </td>
         <td></td>
-      </tr>`
-    )
+      </tr>`;
+    })
     .join('');
 
   body.querySelectorAll('.role-select').forEach((select) => {
