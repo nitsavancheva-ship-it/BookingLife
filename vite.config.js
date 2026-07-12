@@ -8,6 +8,8 @@ export default defineConfig({
         main: resolve(__dirname, 'index.html'),
         login: resolve(__dirname, 'login.html'),
         register: resolve(__dirname, 'register.html'),
+        forgotPassword: resolve(__dirname, 'forgot-password.html'),
+        resetPassword: resolve(__dirname, 'reset-password.html'),
         property: resolve(__dirname, 'property.html'),
         propertyEdit: resolve(__dirname, 'property-edit.html'),
         myBookings: resolve(__dirname, 'my-bookings.html'),
