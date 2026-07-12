@@ -20,7 +20,11 @@ function renderBookingCard(booking) {
   const cover = property?.property_photos?.find((p) => p.is_cover) || property?.property_photos?.[0];
   const imageUrl = cover ? getPhotoUrl(cover.storage_path) : 'https://placehold.co/300x200?text=No+Photo';
   const isPast = booking.check_out < todayISO();
-  const hasReview = booking.reviews && booking.reviews.length > 0;
+  // reviews.booking_id is unique, so PostgREST embeds this as a single
+  // object (or null), not an array.
+  const hasReview = Array.isArray(booking.reviews)
+    ? booking.reviews.length > 0
+    : Boolean(booking.reviews);
 
   return `
     <div class="col-md-6">
