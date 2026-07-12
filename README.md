@@ -3,7 +3,7 @@
 **Author:** nitsavancheva-ship-it
 **Email:** ivelevbg@gmail.com
 **GitHub Repo:** https://github.com/nitsavancheva-ship-it/BookingLife
-**Live Project URL:** _pending Netlify deployment — see Task 25_
+**Live Project URL:** https://bookinglife.netlify.app
 **Sample credentials:**
 - Guest: `demo.guest@bookinglife.test` / `Demo12345!`
 - Admin: `demo.admin@bookinglife.test` / `Demo12345!`
