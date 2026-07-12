@@ -136,6 +136,12 @@ async function init() {
   const user = await requireAuth();
   if (!user) return;
 
+  const role = await getCurrentRole();
+  if (role !== 'host' && role !== 'admin') {
+    window.location.href = '/index.html';
+    return;
+  }
+
   if (propertyId) {
     await loadExisting(user);
   } else {

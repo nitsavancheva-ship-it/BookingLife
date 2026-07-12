@@ -1,6 +1,6 @@
 import '../theme.js';
 import { renderNavbar } from '../components/navbar.js';
-import { requireAuth } from '../auth.js';
+import { requireRole } from '../auth.js';
 import { listPropertiesByOwner, deleteProperty } from '../services/properties.js';
 import { listBookingsForProperty } from '../services/bookings.js';
 import { getPhotoUrl } from '../services/photos.js';
@@ -30,7 +30,7 @@ async function renderBookingsAccordion(property) {
 }
 
 async function init() {
-  const user = await requireAuth();
+  const user = await requireRole('host');
   if (!user) return;
 
   const properties = await listPropertiesByOwner(user.id);

@@ -6,11 +6,12 @@
 **Live Project URL:** https://bookinglife.netlify.app
 **Sample credentials:**
 - Guest: `demo.guest@bookinglife.test` / `Demo12345!`
+- Host: `demo.host@bookinglife.test` / `Demo12345!`
 - Admin: `demo.admin@bookinglife.test` / `Demo12345!`
 
 ## Project Description
 
-BookingLife is an Airbnb-style property booking platform. Any registered user can browse properties, book a stay, and review a completed stay as a guest — and can also list their own properties as a host (there's no separate "host" role; hosting is just an action available to any signed-in user on their own listings). Admins can manage all users, properties, and bookings across the platform from a dedicated admin panel.
+BookingLife is an Airbnb-style property booking platform with three strictly separated roles, chosen at registration. Guests (role `user`) browse properties, book stays, and review completed stays — they cannot list properties. Hosts (role `host`) list and manage their own properties and see the bookings they receive — they cannot book stays. Admins manage all users, properties, and bookings across the platform from a dedicated admin panel. The separation is enforced by Row-Level Security policies in the database, not just by the UI.
 
 ## Architecture
 

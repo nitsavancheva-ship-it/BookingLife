@@ -1,7 +1,7 @@
 import '../theme.js';
 import { Modal } from 'bootstrap';
 import { renderNavbar } from '../components/navbar.js';
-import { requireAuth } from '../auth.js';
+import { requireRole } from '../auth.js';
 import { listMyBookings, cancelBooking } from '../services/bookings.js';
 import { createReview } from '../services/reviews.js';
 import { getPhotoUrl } from '../services/photos.js';
@@ -90,7 +90,7 @@ async function loadBookings(user) {
 }
 
 async function init() {
-  const user = await requireAuth();
+  const user = await requireRole('user');
   if (!user) return;
 
   reviewModal = new Modal(document.getElementById('review-modal'));

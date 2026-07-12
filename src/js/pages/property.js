@@ -3,7 +3,7 @@ import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 import '../leafletIcon.js';
 import { renderNavbar } from '../components/navbar.js';
-import { getCurrentUser } from '../auth.js';
+import { getCurrentUser, getCurrentRole } from '../auth.js';
 import { getPropertyById } from '../services/properties.js';
 import { getPhotoUrl } from '../services/photos.js';
 import { listReviewsForProperty } from '../services/reviews.js';
@@ -93,6 +93,7 @@ async function init() {
   const property = await getPropertyById(propertyId);
   const reviews = await listReviewsForProperty(propertyId);
   const user = await getCurrentUser();
+  const role = user ? await getCurrentRole() : null;
 
   document.getElementById('loading').classList.add('d-none');
   document.getElementById('property-content').classList.remove('d-none');
@@ -131,6 +132,11 @@ async function init() {
   } else if (user.id === property.owner_id) {
     document.getElementById('booking-widget').classList.add('d-none');
     document.getElementById('owner-notice').classList.remove('d-none');
+  } else if (role !== 'user') {
+    // Hosts and admins don't book; only guest accounts can.
+    const widget = document.getElementById('booking-widget');
+    widget.classList.add('d-none');
+    widget.insertAdjacentHTML('afterend', '<p class="text-muted text-center mb-0">Booking is available to guest accounts.</p>');
   } else {
     document.getElementById('booking-form').addEventListener('submit', async (e) => {
       e.preventDefault();

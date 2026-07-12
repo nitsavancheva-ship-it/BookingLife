@@ -16,8 +16,9 @@ form.addEventListener('submit', async (e) => {
   const displayName = document.getElementById('display-name').value.trim();
   const email = document.getElementById('email').value.trim();
   const password = document.getElementById('password').value;
+  const role = document.querySelector('input[name="role"]:checked')?.value;
 
-  if (!isNonEmpty(displayName) || !isValidEmail(email) || password.length < 6) {
+  if (!isNonEmpty(displayName) || !isValidEmail(email) || password.length < 6 || !role) {
     form.classList.add('was-validated');
     return;
   }
@@ -25,7 +26,7 @@ form.addEventListener('submit', async (e) => {
   const { error } = await supabase.auth.signUp({
     email,
     password,
-    options: { data: { display_name: displayName } },
+    options: { data: { display_name: displayName, role } },
   });
 
   if (error) {

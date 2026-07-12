@@ -29,6 +29,7 @@ function renderUsers(profiles) {
         <td>
           <select class="form-select form-select-sm role-select" data-user-id="${p.id}">
             <option value="user" ${p.user_roles?.[0]?.role === 'user' ? 'selected' : ''}>user</option>
+            <option value="host" ${p.user_roles?.[0]?.role === 'host' ? 'selected' : ''}>host</option>
             <option value="admin" ${p.user_roles?.[0]?.role === 'admin' ? 'selected' : ''}>admin</option>
           </select>
         </td>

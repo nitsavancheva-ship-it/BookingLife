@@ -12,12 +12,22 @@ export async function renderNavbar() {
     <a class="nav-link" href="/register.html">Register</a>
   `;
 
+  const roleLinks = {
+    user: `
+      <a class="nav-link" href="/index.html">Browse</a>
+      <a class="nav-link" href="/my-bookings.html">My Bookings</a>
+    `,
+    host: `
+      <a class="nav-link" href="/my-properties.html">My Properties</a>
+    `,
+    admin: `
+      <a class="nav-link" href="/admin.html">Admin</a>
+    `,
+  };
+
   const loggedInLinks = `
-    <a class="nav-link" href="/index.html">Browse</a>
-    <a class="nav-link" href="/my-bookings.html">My Bookings</a>
-    <a class="nav-link" href="/my-properties.html">My Properties</a>
+    ${roleLinks[role] || roleLinks.user}
     <a class="nav-link" href="/profile.html">Profile</a>
-    ${role === 'admin' ? '<a class="nav-link" href="/admin.html">Admin</a>' : ''}
     <a class="nav-link" href="#" id="logout-link">Logout</a>
   `;
 
