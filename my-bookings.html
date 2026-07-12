@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BookingLife — My Bookings</title>
+</head>
+<body>
+  <div id="navbar"></div>
+  <main class="container my-4">
+    <h1 class="mb-4"><i class="bi bi-calendar3"></i> My Bookings</h1>
+
+    <div id="loading" class="text-center py-5">
+      <div class="spinner-border text-primary" role="status"></div>
+    </div>
+    <div id="empty-state" class="text-center py-5 d-none">
+      <i class="bi bi-calendar-x display-1 text-muted"></i>
+      <p class="text-muted mt-3">You have no bookings yet.</p>
+      <a href="/index.html" class="btn btn-primary">Browse properties</a>
+    </div>
+    <div id="bookings-list" class="row g-3"></div>
+  </main>
+
+  <div class="modal fade" id="review-modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Leave a review</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="review-form">
+            <div class="mb-3">
+              <label class="form-label">Rating</label>
+              <select id="review-rating" class="form-select" required>
+                <option value="5">5 - Excellent</option>
+                <option value="4">4 - Good</option>
+                <option value="3">3 - Average</option>
+                <option value="2">2 - Poor</option>
+                <option value="1">1 - Terrible</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Comment</label>
+              <textarea id="review-comment" class="form-control" rows="3"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Submit review</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="/src/js/pages/myBookings.js"></script>
+</body>
+</html>
