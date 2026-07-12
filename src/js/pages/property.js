@@ -1,6 +1,7 @@
 import '../theme.js';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
+import '../leafletIcon.js';
 import { renderNavbar } from '../components/navbar.js';
 import { getCurrentUser } from '../auth.js';
 import { getPropertyById } from '../services/properties.js';
