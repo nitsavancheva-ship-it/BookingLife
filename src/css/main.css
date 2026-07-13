@@ -1,18 +1,259 @@
-.property-card {
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
+/* ---------------------------------------------------------------------------
+   BookingLife theme — "Rose Valley" warm minimal.
+   A styling layer over Bootstrap 5.3: everything below overrides Bootstrap's
+   component CSS variables; no markup or logic depends on it.
+   --------------------------------------------------------------------------- */
 
-.property-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+:root {
+  --bl-rose: #d93a5c;        /* Bulgarian rose crimson — the one accent */
+  --bl-rose-deep: #b82848;   /* hover / active */
+  --bl-rose-soft: #fbeef1;   /* tinted chips and hovers */
+  --bl-ink: #211a1d;         /* warm near-black */
+  --bl-muted: #77696e;       /* warm gray for secondary text */
+  --bl-bg: #faf7f5;          /* whisper-blush page background */
+  --bl-surface: #ffffff;
+  --bl-line: #ece4e1;        /* hairline borders */
+  --bl-amber: #e8a33d;       /* star ratings */
+  --bl-radius: 1rem;
+  --bl-radius-sm: 0.75rem;
+  --bl-shadow: 0 1px 2px rgba(33, 26, 29, 0.06), 0 8px 24px rgba(33, 26, 29, 0.07);
+  --bl-shadow-lift: 0 2px 4px rgba(33, 26, 29, 0.07), 0 16px 32px rgba(33, 26, 29, 0.12);
+
+  --bs-body-font-family: 'Plus Jakarta Sans Variable', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --bs-body-bg: var(--bl-bg);
+  --bs-body-color: var(--bl-ink);
+  --bs-secondary-color: var(--bl-muted);
+  --bs-border-color: var(--bl-line);
+  --bs-border-radius: var(--bl-radius-sm);
+  --bs-link-color-rgb: 217, 58, 92;
+  --bs-link-hover-color-rgb: 184, 40, 72;
+  --bs-focus-ring-color: rgba(217, 58, 92, 0.25);
 }
 
 body {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  letter-spacing: -0.01em;
 }
 
 main {
   flex: 1;
+}
+
+h1, h2, h3, .card-title {
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.text-muted {
+  color: var(--bl-muted) !important;
+}
+
+/* --- Navbar: white bar, hairline base, rose brand ------------------------- */
+
+.bl-nav {
+  background: var(--bl-surface);
+  border-bottom: 1px solid var(--bl-line);
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+
+.bl-nav .navbar-brand {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--bl-ink);
+}
+
+.bl-nav .navbar-brand .bi {
+  color: var(--bl-rose);
+}
+
+.bl-nav .nav-link {
+  color: var(--bl-ink);
+  font-weight: 600;
+  border-radius: 999px;
+  padding: 0.4rem 0.9rem;
+  transition: background-color 0.15s ease;
+}
+
+.bl-nav .nav-link:hover,
+.bl-nav .nav-link:focus {
+  background: var(--bl-rose-soft);
+  color: var(--bl-rose-deep);
+}
+
+/* --- Buttons --------------------------------------------------------------- */
+
+.btn {
+  --bs-btn-border-radius: var(--bl-radius-sm);
+  font-weight: 700;
+  padding: 0.5rem 1.1rem;
+}
+
+.btn-primary {
+  --bs-btn-bg: var(--bl-rose);
+  --bs-btn-border-color: var(--bl-rose);
+  --bs-btn-hover-bg: var(--bl-rose-deep);
+  --bs-btn-hover-border-color: var(--bl-rose-deep);
+  --bs-btn-active-bg: var(--bl-rose-deep);
+  --bs-btn-active-border-color: var(--bl-rose-deep);
+  --bs-btn-disabled-bg: #eaa7b6;
+  --bs-btn-disabled-border-color: #eaa7b6;
+}
+
+.btn-outline-primary {
+  --bs-btn-color: var(--bl-rose);
+  --bs-btn-border-color: var(--bl-rose);
+  --bs-btn-hover-bg: var(--bl-rose);
+  --bs-btn-hover-border-color: var(--bl-rose);
+  --bs-btn-active-bg: var(--bl-rose-deep);
+  --bs-btn-active-border-color: var(--bl-rose-deep);
+}
+
+.btn-outline-secondary {
+  --bs-btn-color: var(--bl-muted);
+  --bs-btn-border-color: var(--bl-line);
+  --bs-btn-hover-bg: var(--bl-bg);
+  --bs-btn-hover-color: var(--bl-ink);
+  --bs-btn-hover-border-color: var(--bl-line);
+}
+
+/* --- Cards ------------------------------------------------------------------ */
+
+.card {
+  --bs-card-border-color: transparent;
+  --bs-card-border-radius: var(--bl-radius);
+  --bs-card-inner-border-radius: calc(var(--bl-radius) - 1px);
+  box-shadow: var(--bl-shadow);
+}
+
+.property-card {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.property-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--bl-shadow-lift) !important;
+}
+
+.property-card .card-text .bi-star-fill {
+  color: var(--bl-amber) !important;
+}
+
+.text-warning {
+  color: var(--bl-amber) !important;
+}
+
+/* Price line on cards and booking widget reads as the product's key number */
+.card .fw-bold,
+.card .card-title + .card-text + .card-text {
+  font-variant-numeric: tabular-nums;
+}
+
+/* --- Forms ------------------------------------------------------------------ */
+
+.form-control,
+.form-select {
+  border-color: var(--bl-line);
+  border-radius: var(--bl-radius-sm);
+  padding: 0.55rem 0.9rem;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--bl-rose);
+  box-shadow: 0 0 0 0.25rem rgba(217, 58, 92, 0.15);
+}
+
+.form-check-input:checked {
+  background-color: var(--bl-rose);
+  border-color: var(--bl-rose);
+}
+
+.form-check-input:focus {
+  border-color: var(--bl-rose);
+  box-shadow: 0 0 0 0.25rem rgba(217, 58, 92, 0.15);
+}
+
+/* --- Badges (amenities) ------------------------------------------------------ */
+
+.badge.text-bg-light {
+  background: var(--bl-rose-soft) !important;
+  color: var(--bl-rose-deep) !important;
+  border: none !important;
+  font-weight: 600;
+  padding: 0.5em 0.9em;
+  border-radius: 999px;
+}
+
+/* --- Tabs (admin) ------------------------------------------------------------ */
+
+.nav-tabs {
+  --bs-nav-tabs-link-active-color: var(--bl-rose-deep);
+  --bs-nav-tabs-border-color: var(--bl-line);
+  --bs-nav-tabs-link-active-border-color: var(--bl-line) var(--bl-line) var(--bl-surface);
+  --bs-nav-link-color: var(--bl-muted);
+  --bs-nav-link-hover-color: var(--bl-ink);
+  font-weight: 600;
+}
+
+.tab-content {
+  background: var(--bl-surface);
+  border-radius: 0 0 var(--bl-radius) var(--bl-radius);
+}
+
+.tab-content.border {
+  border-color: var(--bl-line) !important;
+}
+
+/* --- Tables ------------------------------------------------------------------ */
+
+.table {
+  --bs-table-border-color: var(--bl-line);
+}
+
+/* --- Surfaces: maps, carousels, galleries ------------------------------------ */
+
+#map,
+.carousel,
+.carousel-item img {
+  border-radius: var(--bl-radius) !important;
+  overflow: hidden;
+}
+
+.carousel {
+  box-shadow: var(--bl-shadow);
+}
+
+/* --- Modals and toasts -------------------------------------------------------- */
+
+.modal-content {
+  border: none;
+  border-radius: var(--bl-radius);
+  box-shadow: var(--bl-shadow-lift);
+}
+
+.toast {
+  border-radius: var(--bl-radius-sm);
+}
+
+/* --- Alerts -------------------------------------------------------------------- */
+
+.alert {
+  border-radius: var(--bl-radius-sm);
+}
+
+/* --- Accessibility floor --------------------------------------------------------- */
+
+:focus-visible {
+  outline: 2px solid var(--bl-rose);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .property-card,
+  .bl-nav .nav-link {
+    transition: none;
+  }
 }
