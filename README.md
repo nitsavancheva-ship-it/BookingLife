@@ -7,7 +7,7 @@
 **Sample credentials:**
 - Guest: `demo.guest@bookinglife.test` / `Demo12345!`
 - Host: `demo.host@bookinglife.test` / `Demo12345!`
-- Admin: `demo.admin@bookinglife.test` / `Demo12345!`
+
 
 ## Project Description
 
