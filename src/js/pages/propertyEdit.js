@@ -99,7 +99,13 @@ function renderPhotoGallery(photos) {
 }
 
 async function loadExisting(user) {
-  const property = await getPropertyById(propertyId);
+  let property;
+  try {
+    property = await getPropertyById(propertyId);
+  } catch {
+    window.location.href = '/index.html';
+    return;
+  }
   const role = await getCurrentRole();
 
   if (property.owner_id !== user.id && role !== 'admin') {

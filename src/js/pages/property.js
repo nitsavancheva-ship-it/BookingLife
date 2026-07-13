@@ -90,7 +90,14 @@ function updatePriceSummary(pricePerNight) {
 }
 
 async function init() {
-  const property = await getPropertyById(propertyId);
+  let property;
+  try {
+    property = await getPropertyById(propertyId);
+  } catch {
+    document.getElementById('loading').innerHTML =
+      '<p class="text-muted"><i class="bi bi-house-x"></i> Property not found.</p>';
+    return;
+  }
   const reviews = await listReviewsForProperty(propertyId);
   const user = await getCurrentUser();
   const role = user ? await getCurrentRole() : null;
