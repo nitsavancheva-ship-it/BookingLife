@@ -1,7 +1,7 @@
 # BookingLife
 
 **Author:** nitsavancheva-ship-it
-**Email:** ivelevbg@gmail.com
+**Email:** nitsa.vancheva@gmail.com
 **GitHub Repo:** https://github.com/nitsavancheva-ship-it/BookingLife
 **Live Project URL:** https://bookinglife.netlify.app
 **Sample credentials:**
