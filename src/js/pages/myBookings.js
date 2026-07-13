@@ -38,6 +38,11 @@ function renderBookingCard(booking) {
               <h5 class="card-title">${escapeHtml(property?.title || 'Property')}</h5>
               <p class="card-text mb-1">${formatDate(booking.check_in)} &rarr; ${formatDate(booking.check_out)}</p>
               <p class="card-text mb-2">$${booking.total_price} <span class="badge text-bg-${booking.status === 'confirmed' ? 'success' : 'secondary'}">${booking.status}</span></p>
+              ${
+                booking.status === 'confirmed' && !isPast
+                  ? '<p class="card-text small text-muted mb-2"><i class="bi bi-wallet2"></i> Payment due at the property</p>'
+                  : ''
+              }
               <div class="d-flex gap-2">
                 ${
                   booking.status === 'confirmed' && !isPast

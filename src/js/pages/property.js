@@ -167,7 +167,7 @@ async function init() {
           check_out: checkOut,
           total_price: calculateTotalPrice(property.price_per_night, checkIn, checkOut),
         });
-        showToast('Booking confirmed!');
+        showToast('Booking confirmed! You pay at the property on arrival.');
         window.location.href = '/my-bookings.html';
       } catch (error) {
         if (error.code === '23P01') {

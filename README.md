@@ -13,6 +13,8 @@
 
 BookingLife is an Airbnb-style property booking platform with three strictly separated roles, chosen at registration. Guests (role `user`) browse properties, book stays, and review completed stays — they cannot list properties. Hosts (role `host`) list and manage their own properties and see the bookings they receive — they cannot book stays. Admins manage all users, properties, and bookings across the platform from a dedicated admin panel. The separation is enforced by Row-Level Security policies in the database, not just by the UI.
 
+There is no online payment: booking a stay reserves the dates, and the guest pays the shown total at the property on arrival. The app marks this at every payment touchpoint (booking widget, confirmation, and the guest's bookings list).
+
 ## Architecture
 
 - **Frontend:** Vanilla JavaScript, HTML, CSS, Bootstrap 5, Bootstrap Icons, Leaflet (OpenStreetMap tiles).
